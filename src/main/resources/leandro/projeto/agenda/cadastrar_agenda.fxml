@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="746.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="leandro.projeto.agenda.controllers.CadastrarAgenda">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="414.0" minWidth="10.0" prefWidth="31.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="414.0" minWidth="10.0" prefWidth="342.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="444.0" minWidth="10.0" prefWidth="348.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="382.0" minWidth="10.0" prefWidth="29.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="275.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="256.0" minHeight="10.0" prefHeight="244.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="275.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="275.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <HBox alignment="CENTER" prefHeight="153.0" prefWidth="711.0" GridPane.columnIndex="1" GridPane.columnSpan="2">
+         <children>
+            <Label text="Cadastrar Agenda">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+         <children>
+            <Label text="Nome da agenda" />
+            <TextField fx:id="tfNomeAgenda" />
+         </children>
+      </HBox>
+      <BorderPane prefHeight="200.0" prefWidth="378.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <center>
+            <ListView fx:id="lstEmail" prefHeight="200.0" prefWidth="200.0" visible="false" BorderPane.alignment="CENTER" />
+         </center>
+         <left>
+            <VBox alignment="CENTER" prefHeight="240.0" prefWidth="170.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="93.0" text="Email:" />
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="27.0" prefWidth="247.0" spacing="10.0">
+                     <children>
+                        <TextField fx:id="tfEmail" prefHeight="25.0" prefWidth="132.0" />
+                        <Button mnemonicParsing="false" onAction="#adicionarEmail" text="+" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </left>
+      </BorderPane>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <left>
+            <VBox alignment="CENTER" prefHeight="240.0" prefWidth="170.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="93.0" text="Telefone:" />
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="27.0" prefWidth="247.0" spacing="10.0">
+                     <children>
+                        <TextField fx:id="tfTelefone" prefWidth="132.0" />
+                        <Button mnemonicParsing="false" onAction="#adicionarTelefone" text="+" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <ListView fx:id="lstTelefone" prefHeight="200.0" prefWidth="154.0" visible="false" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+         <children>
+            <Button mnemonicParsing="false" onAction="#cadastrarAgenda" prefHeight="25.0" prefWidth="120.0" text="Cadastrar Agenda" />
+            <Button mnemonicParsing="false" onAction="#voltar" prefWidth="120.0" text="Voltar" />
+         </children>
+      </VBox>
+   </children>
+</GridPane>
