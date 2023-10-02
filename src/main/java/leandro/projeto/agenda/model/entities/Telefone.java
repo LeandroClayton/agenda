@@ -19,6 +19,11 @@ public class Telefone {
         this.telefone = telefone;
     }
 
+    @Override
+    public String toString() {
+        return telefone;
+    }
+
 
     
 }

@@ -24,6 +24,12 @@ public class RepositorioTelefone {
         } else if(telefone.length() > 11){
             return Resultado.erro("Telefone inválido!!");
         }
+        
+        try  {
+            int inteiro = Integer.parseInt(telefone);
+        } catch (Exception e) {
+            return Resultado.erro("Telefone inválido!!");
+        }
 
         
         Telefone novoTelefone = new Telefone(telefone);

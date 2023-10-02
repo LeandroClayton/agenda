@@ -6,11 +6,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import leandro.projeto.agenda.App;
+import leandro.projeto.agenda.model.entities.Agenda;
 
 public class AlterarAgenda {
 
     @FXML
-    private ListView<?> lstAgendas;
+    private ListView<Agenda> lstAgendas;
 
     @FXML
     private TextArea taDescricao;
