@@ -22,7 +22,7 @@ public class JDBCTelefoneDAO implements TelefoneDAO{
     public Resultado criarTelefone(Telefone telefone, int idAgenda) {
         
         try (Connection con = fabrica.getConnection()){
-            PreparedStatement ptsm = con.prepareStatement("INSERT INTO BD2_telefone (telefone, idAgenda) VALUES(?,?)");
+            PreparedStatement ptsm = con.prepareStatement("INSERT INTO BD2_telefone (numero, idAgenda) VALUES(?,?)");
 
             ptsm.setString(1, telefone.getTelefone());
             ptsm.setInt(2, idAgenda);

@@ -31,6 +31,7 @@ public class JDBCAgendaDAO implements AgendaDAO {
             if (rs == 1) {
 
                 ResultSet resultado = pStatement.getGeneratedKeys();
+                resultado.next();
                 agenda.setId(resultado.getInt(1));
 
 
