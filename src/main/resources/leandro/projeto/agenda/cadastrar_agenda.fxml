@@ -58,7 +58,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="22.0" prefWidth="170.0" spacing="10.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#adicionarEmail" prefHeight="25.0" prefWidth="28.0" text="+" />
+                        <Button fx:id="btAddEmail"  mnemonicParsing="false" onAction="#adicionarEmail" prefHeight="25.0" prefWidth="28.0" text="+" />
                         <Button fx:id="btExclusaoEmail" disable="true" mnemonicParsing="false" onAction="#excluirEmail" prefWidth="28.0" text="-" />
                      </children>
                      <padding>
@@ -82,7 +82,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="34.0" prefWidth="170.0" spacing="10.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#adicionarTelefone" prefHeight="25.0" prefWidth="28.0" text="+" />
+                        <Button fx:id="btAddTelefone"  mnemonicParsing="false" onAction="#adicionarTelefone" prefHeight="25.0" prefWidth="28.0" text="+" />
                         <Button fx:id="btExclusaoTelefone" disable="true" mnemonicParsing="false" onAction="#excluirTelefone" prefWidth="28.0" text="-" />
                      </children>
                      <padding>

@@ -2,6 +2,8 @@ package leandro.projeto.agenda.controllers;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.github.hugoperlin.results.Resultado;
@@ -14,6 +16,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import leandro.projeto.agenda.App;
 import leandro.projeto.agenda.model.entities.Agenda;
@@ -32,6 +35,12 @@ public class CadastrarAgenda implements Initializable {
 
     @FXML
     private Button btExclusaoEmail;
+
+    @FXML
+    private Button btAddTelefone;
+        
+    @FXML
+    private Button btAddEmail;
 
     @FXML
     private Button btExclusaoTelefone;
@@ -132,6 +141,8 @@ public class CadastrarAgenda implements Initializable {
             return;
         }
 
+        
+
         Telefone telefone = new Telefone(nvTelefone);
         lstTelefone.getItems().add(telefone);
         tfTelefone.clear();
@@ -139,7 +150,28 @@ public class CadastrarAgenda implements Initializable {
 
     @FXML
     void alterarEmail(ActionEvent event) {
+        int index = lstEmail.getSelectionModel().getSelectedIndex();
+        String nvEmail = tfEmail.getText();
+        
+        if (nvEmail.isBlank() || nvEmail.isEmpty()) {
+            Alert alerta = new Alert(AlertType.CONFIRMATION);
+            alerta.setTitle("Confirmação de exclusão");
+            alerta.setContentText("Deseja excluir o email " + lstEmail.getItems().get(index) + "?");
+            Optional<ButtonType> opcao = alerta.showAndWait();
+            if (opcao.get() == ButtonType.OK) {
+                lstEmail.getItems().remove(index);
+                atualizarLstViewEmail(lstEmail);
+                return;
+            }
+        }
 
+        Email email = new Email(nvEmail);
+        lstEmail.getItems().remove(index);
+        lstEmail.getItems().add(index, email);
+        btAlteracaoEmail.setDisable(true);
+        btExclusaoEmail.setDisable(true);
+        btAddEmail.setDisable(false);
+        tfEmail.clear();
     }
 
     @FXML
@@ -149,7 +181,24 @@ public class CadastrarAgenda implements Initializable {
 
     @FXML
     void excluirEmail(ActionEvent event) {
+        int index = lstEmail.getSelectionModel().getSelectedIndex();
 
+        Alert alerta = new Alert(AlertType.CONFIRMATION);
+        alerta.setTitle("Confirmação de exclusão");
+        alerta.setContentText("Deseja excluir o email " + lstEmail.getItems().get(index) + "?");
+        Optional<ButtonType> opcao = alerta.showAndWait();
+
+        if (opcao.get() != ButtonType.OK) {
+            return;
+        }
+
+        lstEmail.getItems().remove(index);
+        atualizarLstViewEmail(lstEmail);
+
+        tfEmail.clear();
+        btAddEmail.setDisable(false);
+        btAlteracaoEmail.setDisable(true);
+        btExclusaoEmail.setDisable(true);
     }
 
     @FXML
@@ -162,6 +211,7 @@ public class CadastrarAgenda implements Initializable {
         tfEmail.setText(lstEmail.getSelectionModel().getSelectedItem().getEmail());   
         btAlteracaoEmail.setDisable(false);
         btExclusaoEmail.setDisable(false);
+        btAddEmail.setDisable(true);
     }
 
     @FXML
@@ -169,6 +219,7 @@ public class CadastrarAgenda implements Initializable {
         tfTelefone.setText(lstTelefone.getSelectionModel().getSelectedItem().getTelefone());   
         btAlteracaoTelefone.setDisable(false);
         btExclusaoTelefone.setDisable(false);
+        btAddTelefone.setDisable(true);
     }
 
     @FXML
@@ -189,5 +240,19 @@ public class CadastrarAgenda implements Initializable {
             lstTelefone.getItems().clear(); 
         }
     }   
+
+    private static void atualizarLstViewEmail(ListView<Email> lstView){
+        List<Email> lstItems = new ArrayList<>();
+        lstItems.addAll(lstView.getItems());
+        lstView.getItems().clear();
+        lstView.getItems().addAll(lstItems);
+    }
+
+        private static void atualizarLstViewTelefone(ListView<Telefone> lstView){
+        List<Telefone> lstItems = (List<Telefone>)lstView.getItems();
+        lstItems.addAll(lstView.getItems());
+        lstView.getItems().clear();
+        lstView.getItems().addAll(lstItems);
+    }
 
 }
