@@ -98,7 +98,6 @@ public class CadastrarAgenda implements Initializable {
             emails.addAll(lstEmail.getItems());
         }
 
-
         Resultado resultado = repositorioAgenda.cadastrarAgenda(nomeAgenda, telefones, emails);
         Alert alerta;
 
@@ -176,7 +175,28 @@ public class CadastrarAgenda implements Initializable {
 
     @FXML
     void alterarTelefone(ActionEvent event) {
+        int index = lstTelefone.getSelectionModel().getSelectedIndex();
+        String nvTelefone = tfTelefone.getText();
+        
+        if (nvTelefone.isBlank() || nvTelefone.isEmpty()) {
+            Alert alerta = new Alert(AlertType.CONFIRMATION);
+            alerta.setTitle("Confirmação de exclusão");
+            alerta.setContentText("Deseja excluir o telefone " + lstTelefone.getItems().get(index) + "?");
+            Optional<ButtonType> opcao = alerta.showAndWait();
+            if (opcao.get() == ButtonType.OK) {
+                lstTelefone.getItems().remove(index);
+                atualizarLstViewTelefone(lstTelefone);
+                return;
+            }
+        }
 
+        Telefone telefone = new Telefone(nvTelefone);
+        lstTelefone.getItems().remove(index);
+        lstTelefone.getItems().add(index, telefone);
+        btAlteracaoTelefone.setDisable(true);
+        btExclusaoTelefone.setDisable(true);
+        btAddTelefone.setDisable(false);
+        tfTelefone.clear();
     }
 
     @FXML
@@ -203,7 +223,24 @@ public class CadastrarAgenda implements Initializable {
 
     @FXML
     void excluirTelefone(ActionEvent event) {
+        int index = lstTelefone.getSelectionModel().getSelectedIndex();
 
+        Alert alerta = new Alert(AlertType.CONFIRMATION);
+        alerta.setTitle("Confirmação de exclusão");
+        alerta.setContentText("Deseja excluir o telefone " + lstTelefone.getItems().get(index) + "?");
+        Optional<ButtonType> opcao = alerta.showAndWait();
+
+        if (opcao.get() != ButtonType.OK) {
+            return;
+        }
+
+        lstTelefone.getItems().remove(index);
+        atualizarLstViewTelefone(lstTelefone);
+
+        tfTelefone.clear();
+        btAddTelefone.setDisable(false);
+        btAlteracaoTelefone.setDisable(true);
+        btExclusaoTelefone.setDisable(true);
     }
 
     @FXML
@@ -216,6 +253,7 @@ public class CadastrarAgenda implements Initializable {
 
     @FXML
     void selecionarTelefone(MouseEvent event) {
+
         tfTelefone.setText(lstTelefone.getSelectionModel().getSelectedItem().getTelefone());   
         btAlteracaoTelefone.setDisable(false);
         btExclusaoTelefone.setDisable(false);
@@ -249,7 +287,7 @@ public class CadastrarAgenda implements Initializable {
     }
 
         private static void atualizarLstViewTelefone(ListView<Telefone> lstView){
-        List<Telefone> lstItems = (List<Telefone>)lstView.getItems();
+        List<Telefone> lstItems = new ArrayList<>();
         lstItems.addAll(lstView.getItems());
         lstView.getItems().clear();
         lstView.getItems().addAll(lstItems);

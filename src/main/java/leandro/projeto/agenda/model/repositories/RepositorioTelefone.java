@@ -21,16 +21,9 @@ public class RepositorioTelefone {
         
         if (telefone.isEmpty() || telefone.isBlank()) {
             return Resultado.erro("Emails vazios não são permitidos!!");
-        } else if(telefone.length() > 11){
+        } else if(telefone.length() != 11 && telefone.length() != 9){
             return Resultado.erro("Telefone inválido!!");
         }
-        
-        try  {
-            int inteiro = Integer.parseInt(telefone);
-        } catch (Exception e) {
-            return Resultado.erro("Telefone inválido!!");
-        }
-
         
         Telefone novoTelefone = new Telefone(telefone);
 
