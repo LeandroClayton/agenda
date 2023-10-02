@@ -8,12 +8,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leandro.projeto.agenda.controllers.Principal">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="511.0" minWidth="744.0" prefHeight="511.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leandro.projeto.agenda.controllers.Principal">
    <center>
-      <VBox alignment="TOP_CENTER" prefHeight="20.0" prefWidth="600.0" spacing="30.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="370.0" prefWidth="744.0" spacing="30.0" BorderPane.alignment="BOTTOM_CENTER">
          <children>
-            <Label text="Aplicativo de Agenda">
+            <Button mnemonicParsing="false" onAction="#cadastrarAgenda" prefHeight="25.0" prefWidth="143.0" text="Cadastrar nova agenda" />
+            <Button mnemonicParsing="false" onAction="#alterarAgenda" prefHeight="25.0" prefWidth="143.0" text="Alterar agendas" />
+            <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" prefHeight="230.0" prefWidth="292.0" text="A interface mais porca que eu já criei, perdão professor" />
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="195.0" prefWidth="744.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label minWidth="0.0" text="Aplicativo de Agenda">
                <font>
                   <Font size="24.0" />
                </font>
@@ -21,12 +29,6 @@
                   <Insets bottom="30.0" />
                </padding>
             </Label>
-            <Button mnemonicParsing="false" onAction="#cadastrarAgenda" prefHeight="25.0" prefWidth="143.0" text="Cadastrar nova agenda" />
-            <Button mnemonicParsing="false" onAction="#alterarAgenda" prefHeight="25.0" prefWidth="143.0" text="Alterar agendas" />
-         </children>
-      </VBox>
-   </center>
-   <top>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </children></HBox>
    </top>
 </BorderPane>
